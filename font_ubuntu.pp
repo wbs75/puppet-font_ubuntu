@@ -15,8 +15,7 @@ class projects::font_ubuntu (
         source  => 'https://github.com/wbs75/puppet-font_ubuntu',
     }
 
-
-    file {"${my_homedir}/Library/Fonts":
+    file {"/Library/Fonts":
       ensure => 'directory',
       recurse => true,
       source => "${my_homedir}/src/puppet-font_ubuntu/ubuntu_font_family"

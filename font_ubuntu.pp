@@ -1,4 +1,4 @@
-class projects::fonts (
+class projects::font_ubuntu (
     $my_homedir   = $people::wbs75::params::my_homedir,
     $my_sourcedir = $people::wbs75::params::my_sourcedir,
     $my_username  = $people::wbs75::params::my_username
@@ -11,7 +11,7 @@ class projects::fonts (
     }
 
     boxen::project { 'font_ubuntu':
-        dir     => "${my_homedir}/src/font_ubuntu",
+        dir     => "${my_homedir}/src/puppet-font_ubuntu",
         source  => 'https://github.com/wbs75/puppet-font_ubuntu',
     }
 
@@ -19,7 +19,7 @@ class projects::fonts (
     file {"${my_homedir}/Library/Fonts":
       ensure => 'directory',
       recurse => true,
-      source => "${my_homedir}/src/font_ubuntu"
+      source => "${my_homedir}/src/puppet-font_ubuntu/ubuntu_font_family"
     }
 
 }

@@ -10,7 +10,7 @@ class projects::fonts (
         mode  => '0644',
     }
 
-    boxen::project { 'boxen-desktop':
+    boxen::project { 'font_ubuntu':
         dir     => "${my_homedir}/src/font_ubuntu",
         source  => 'https://github.com/wbs75/puppet-font_ubuntu',
     }

@@ -1,4 +1,4 @@
-boxen-font.ubuntu
+puppet-font.ubuntu
 =================
 
 Fonts for [my-boxen.](https://github.com/wbs75/my-boxen)

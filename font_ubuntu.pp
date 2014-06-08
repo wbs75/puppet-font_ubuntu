@@ -5,15 +5,25 @@ class projects::font_ubuntu (
     ){
 
     boxen::project { 'font_ubuntu':
-        dir     => "${my_homedir}/src/puppet-font_ubuntu",
-        source  => 'https://github.com/wbs75/puppet-font_ubuntu',
+        dir     =>  "${my_homedir}/src/puppet-font_ubuntu",
+        source  =>  'https://github.com/wbs75/puppet-font_ubuntu',
     }
 
-
-    file {"/Library/Fonts/":
-      ensure =>     'directory',
-      recurse =>    true,
-      source =>     "${my_homedir}/src/puppet-font_ubuntu/ubuntu_font_family"
+    file { '.Font Ubuntu':
+        ensure  =>  file,
+        path    =>  "${my_homedir}/src/puppet-font_ubuntu",
     }
 
+    file {"/Library/Fonts":
+        ensure    =>  'directory',
+        recurse   =>   true,
+        source    =>  "${my_homedir}/src/puppet-font_ubuntu/ubuntu_font_family",
+        mode      =>  '0644',
+    }
+
+    File {
+        owner => 'root',
+        group => 'wheel',
+        mode  => '0644',
+    }
 }

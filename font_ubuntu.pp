@@ -9,16 +9,11 @@ class projects::font_ubuntu (
         source  =>  'https://github.com/wbs75/puppet-font_ubuntu',
     }
 
-    file { '.Font Ubuntu':
-        ensure  =>  file,
-        path    =>  "${my_homedir}/src/puppet-font_ubuntu",
-    }
-
     file {"/Library/Fonts":
         ensure    =>  'directory',
         recurse   =>   true,
         source    =>  "${my_homedir}/src/puppet-font_ubuntu/ubuntu_font_family",
-        mode      =>  '0644',
+        mode  => '0644',
     }
 
     File {
@@ -26,4 +21,5 @@ class projects::font_ubuntu (
         group => 'wheel',
         mode  => '0644',
     }
+
 }

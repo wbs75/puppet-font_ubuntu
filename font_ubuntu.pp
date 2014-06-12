@@ -4,7 +4,7 @@ class projects::font_ubuntu (
     $my_username  = $people::wbs75::params::my_username
     ){
 
-    repository { "${my_homedir}/src/puppet-font_ubuntu" :
+    repository { "${my_homedir}/src/puppet-font_ubuntu":
         source  => 'wbs75/puppet-font_ubuntu',
     }
 

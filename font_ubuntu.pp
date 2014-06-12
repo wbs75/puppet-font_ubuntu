@@ -4,21 +4,21 @@ class projects::font_ubuntu (
     $my_username  = $people::wbs75::params::my_username
     ){
 
-    boxen::project { 'font_ubuntu':
-        dir     =>  "${my_homedir}/src/puppet-font_ubuntu",
-        source  =>  'https://github.com/wbs75/puppet-font_ubuntu',
-    }
-
-    file {"/Library/Fonts":
-        ensure    =>  'directory',
-        recurse   =>   true,
-        source    =>  "${my_homedir}/src/puppet-font_ubuntu/ubuntu_font_family",
-        mode  => '0644',
+    repository { "${my_homedir}/src/puppet-font_ubuntu" :
+        source  => 'wbs75/puppet-font_ubuntu',
     }
 
     File {
         owner => 'root',
-        group => 'wheel',
+        group => 'admin',
+        mode  => '1575',
+    }
+
+    file {"/Library/Fonts":
+        ensure    =>    link,
+        recurse   =>    true,
+        source    =>    "${my_homedir}/src/puppet-font_ubuntu/ubuntu_font_family",
+        require => Repository["${my_homedir}/src/puppet-font_ubuntu"],
         mode  => '0644',
     }
 
